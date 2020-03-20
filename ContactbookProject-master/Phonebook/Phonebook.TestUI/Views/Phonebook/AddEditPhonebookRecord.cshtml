@@ -1,0 +1,59 @@
+﻿@model Phonebook.Common.Phonebook
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add/Edit PhonebookRecord";
+}
+
+@if (Model.Id > 0)
+{
+    <h2>Edit Phonebook Record</h2>
+}
+else
+{
+    <h2>Add Phonebook Record</h2>
+}
+
+<div class="x_content">
+    @using (Html.BeginForm("AddEditPhonebookRecord", "Phonebook", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.Id)
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 top-margin margin-top-20">
+                <label for="FirstName">First Name</label>
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @placeholder = "Enter First Name" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 top-margin top-margin margin-top-20">
+                <label><span class="lnr lnr-screen"></span> Last Name</label>
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @placeholder = "Enter Last Name" })
+
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-md-6 col-sm-6 col-xs-12 top-margin margin-top-20">
+                <label><span class=" form-control-plaintextlnr lnr-screen"></span> Phone Number</label>
+                @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @placeholder = "Enter Phone Number" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 top-margin margin-top-20">
+                <label><span class="lnr lnr-screen"></span> Email</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8 col-xs-12 pull-right margin-top-20">
+                <a href="/Phonebook/Index" class="btn btn-primary pull-right" style="margin-right:2%" type="button">Cancel</a>
+                <button type="submit" class="btn btn-success pull-right" style="margin-right:1%">Submit</button>
+            </div>
+        </div>
+    }
+</div>
+
